@@ -3,7 +3,7 @@
  */
 
 var mongoose = require('mongoose'),
-    mongoseAuth = require('mongose-auth'),
+    mongooseAuth = require('mongoose-auth'),
     sys = require('sys'),
     Schema = mongoose.Schema;
 
@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/touchypeely');
 *
 *
 */
+
 var UserSchema = new Schema ({
     email: String,
     name: String,
@@ -38,8 +39,8 @@ var UserSchema = new Schema ({
   User,
   Item;
 
-//decorate account scheme with the mongose-auth attributes
-UserSchema.plugin(mongoseAuth, {
+//decorate account scheme with the mongoose-auth attributes
+UserSchema.plugin(mongooseAuth, {
   everymodule: {
     everyauth: {
       User: function () {
@@ -66,8 +67,17 @@ UserSchema.plugin(mongoseAuth, {
 
 mongoose.model('Item', ItemSchema);
 mongoose.model('User', UserSchema);
-Item = mongoose.model('Item');
-User = mongoose.model('User');
+
+Item = mongoose.model('Item', ItemSchema);
+User = mongoose.model('User', UserSchema);
+//module.exports = {};
+
+//module.exports.User = mongoose.model('User');
+//module.exports.Item = mongoose.model('Item');
+
+
+
+
 
 
 var bucket = new Item({type: 'bucket'});
@@ -87,3 +97,4 @@ Item.find({type: 'bucket'}, function (err, docs) {
 
   });
 });
+
