@@ -26,12 +26,12 @@ section {
 	overflow: hidden;
 }
 
-section div {
+section.about > div, section.help > div {
 	width: 460px;
 	float: left;
 }
 
-section div:first-of-type {
+section.about > div:first-child, section.help > div:first-child {
 	margin-right: 20px;
 }
 
