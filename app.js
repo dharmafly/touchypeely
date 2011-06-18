@@ -22,6 +22,14 @@ app.get('/', function(req, res){
   res.send('Hello World');
 });
 
+app.get('/login', function(req, res){
+  res.render(__dirname + '/views/login.ejs');
+});
+
+app.post('/login', function(req, res){
+  res.send('Logged in');
+});
+
 // return (paginated) list of all markers
 app.get('/search', function(req, res){
   // req.get
