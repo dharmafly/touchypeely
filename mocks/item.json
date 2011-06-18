@@ -1,0 +1,10 @@
+{
+   "description": "My compost bucket",
+   "type": "bucket",
+   "lat": 50.82719221187368,
+   "lng": -0.16513824462890625,
+   "size": 5,
+   "user": "7",
+   "available": true,
+   "created_at": 1308408645754
+}
