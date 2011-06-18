@@ -1,6 +1,15 @@
 (function (context, L, $, jQuery, keypath, document, window) {
   var GOOGLE_GEOCODE_URI = 'http://www.google.com/uds/GlocalSearch',
+      SEARCH_URI = '/search',
       THE_WERKS_LAT_LNG = new L.LatLng(50.82719221187368, -0.16513824462890625),
+      BucketIcon = L.Icon.extend({
+        iconUrl: '/images/marker.png',
+        shadowUrl: '/images/marker-shadow.png'
+      }),
+      HeapIcon = L.Icon.extend({
+        iconUrl: '/images/marker.png',
+        shadowUrl: '/images/marker-shadow.png'
+      }),
       map;
       
   // Console logging
@@ -37,7 +46,7 @@
       return map;
   }
   
-  function setupAddressLookup(map) {
+  function setupAddressLookup() {
     var addressForm  = $('#form-address'),
         addressField = $('#field-address'),
         report = $('#form-address-report');
@@ -49,11 +58,11 @@
       
       if (adr){
         getLocation(adr, function(lat, lng){
-          var latLng;
+          var latlng;
           
           if (lat !== false){
-            latLng = new L.LatLng(parseFloat(lat), parseFloat(lng));
-            map.setView(latLng, 14);
+            latlng = new L.LatLng(parseFloat(lat), parseFloat(lng));
+            map.setView(latlng, 14);
           }
           else {
             report.text("Sorry, we couldn't find that.");
@@ -69,11 +78,30 @@
     });
   }
   
+  function addMarker(markerLocation, icon){
+    var marker = new L.Marker(markerLocation, {icon:icon, draggable:true});
+    map.addLayer(marker);
+    return marker;
+  }
+  
+  function getItems(){
+    $.getJSON(SEARCH_URI, function(items){
+      $.each(items, function(key, item){
+      
+        var icon = item.type === 'bucket' ? new BucketIcon() : new HeapIcon(),
+            latlng = new L.LatLng(item.lat, item.lng);
+            
+        addMarker(latlng, icon);
+      });
+    });
+  }
+  
   /////
 
   window.map = map = createMap();
   setupAddressLookup(map);
   map.setView(THE_WERKS_LAT_LNG, 14);
+  getItems();
   
 
 })(this, this.L, this.$, this.jQuery, this.keypath, this.document, this);
