@@ -1,5 +1,6 @@
 {"items": [
   {
+   "id": "1",
    "description": "John's bucket",
    "type": "bucket",
    "lat": 50.8267,
@@ -11,6 +12,7 @@
   },
 
   {
+   "id": "2",
    "description": "Emma and Dave's bucket",
    "type": "bucket",
    "lat": 50.83903,
@@ -22,6 +24,7 @@
   },
 
   {
+   "id": "3",
    "description": "Smith family's bucket",
    "type": "bucket",
    "lat": 50.8210,
@@ -33,6 +36,7 @@
   },
 
   {
+   "id": "4",
    "description": "The Basketmakers Arms'bucket",
    "type": "bucket",
    "lat": 50.8210,
@@ -44,6 +48,7 @@
   },
 
   {
+   "id": "5",
    "description": "Prem's bucket",
    "type": "bucket",
    "lat": 50.82400,
@@ -56,6 +61,7 @@
 
 
   {
+   "id": "6",
    "description": "Sarah's bucket",
    "type": "bucket",
    "lat": 50.82948,
@@ -67,6 +73,7 @@
   },
 
   {
+   "id": "7",
    "description": "Aron's bucket",
    "type": "bucket",
    "lat": 50.82593,
@@ -78,6 +85,7 @@
   },
 
   {
+   "id": "8",
    "description": "The Evening Star's Bucket",
    "type": "bucket",
    "lat": 50.8286,
@@ -89,6 +97,7 @@
   },
 
   {
+   "id": "9",
    "description": "The Royal Pavilion Tavern's bucket",
    "type": "bucket",
    "lat": 50.82267173928805,
@@ -99,6 +108,7 @@
    "created_at": 1308408645754
   },
   {
+   "id": "10",
    "description": "James' heap",
    "type": "heap",
    "lat": 50.8358,
@@ -109,6 +119,7 @@
    "created_at": 1308408645754
   },
   {
+   "id": "11",
    "description": "Clifton Garden's heap",
    "type": "heap",
    "lat": 50.8258,
@@ -119,6 +130,7 @@
    "created_at": 1308408645754
   },
   {
+   "id": "12",
    "description": "Turpin's family garden",
    "type": "heap",
    "lat": 50.82144,

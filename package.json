@@ -6,6 +6,7 @@
   "contributors": [],
   "dependencies": {
     "express": ">= 2.3.11 < 3.0.0",
+    "express-namespace": "= 0.0.3",
     "underscore": "= 1.1.6"
   },
   "devDependencies": {},
