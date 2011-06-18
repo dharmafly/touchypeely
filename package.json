@@ -6,9 +6,7 @@
   "contributors": [],
   "dependencies": {
     "express": ">= 2.3.11 < 3.0.0",
-    "mongoose": "= 1.4.0",
-    "mongoose-auth": "= 0.0.9",
-    "everyauth": "= 0.2.11"
+    "underscore": "= 1.1.6"
   },
   "devDependencies": {},
   "engines": {

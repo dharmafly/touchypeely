@@ -1,0 +1,211 @@
+{"items": [
+  {
+   "description": "John's bucket",
+   "type": "bucket",
+   "lat": 50.8267,
+   "lng": -0.1549,
+   "size": 5,
+   "user": "1",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "Emma and Dave's bucket",
+   "type": "bucket",
+   "lat": 50.83903,
+   "lng": -0.15409,
+   "size": 5,
+   "user": "2",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "Smith family's bucket",
+   "type": "bucket",
+   "lat": 50.8210,
+   "lng":  -0.1395,
+   "size": 5,
+   "user": "3",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "The Basketmakers Arms'bucket",
+   "type": "bucket",
+   "lat": 50.8210,
+   "lng": -0.1395,
+   "size": 5,
+   "user": "4",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "Prem's bucket",
+   "type": "bucket",
+   "lat": 50.82400,
+   "lng": -0.16498,
+   "size": 5,
+   "user": "5",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+
+  {
+   "description": "Sarah's bucket",
+   "type": "bucket",
+   "lat": 50.82948,
+   "lng": -0.13750,
+   "size": 5,
+   "user": "6",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "Aron's bucket",
+   "type": "bucket",
+   "lat": 50.82593,
+   "lng": -0.14619,
+   "size": 5,
+   "user": "7",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "The Evening Star's Bucket",
+   "type": "bucket",
+   "lat": 50.8286,
+   "lng": -0.1417,
+   "size": 5,
+   "user": "8",
+   "available": true,
+   "created_at": 1308408645754
+  },
+
+  {
+   "description": "The Royal Pavilion Tavern's bucket",
+   "type": "bucket",
+   "lat": 50.82267173928805,
+   "lng": -0.1377260684967041,
+   "size": 5,
+   "user": "9",
+   "available": true,
+   "created_at": 1308408645754
+  },
+  {
+   "description": "James' heap",
+   "type": "heap",
+   "lat": 50.8358,
+   "lng": -0.1154,
+   "size": 15,
+   "user": "10",
+   "available": true,
+   "created_at": 1308408645754
+  },
+  {
+   "description": "Clifton Garden's heap",
+   "type": "heap",
+   "lat": 50.8258,
+   "lng": -0.1476,
+   "size": 25,
+   "user": "11",
+   "available": true,
+   "created_at": 1308408645754
+  },
+  {
+   "description": "Turpin's family garden",
+   "type": "heap",
+   "lat": 50.82144,
+   "lng": -0.12564,
+   "size": 15,
+   "user": "12",
+   "available": true,
+   "created_at": 1308408645754
+  }
+],
+"users": [
+  {
+  "id": "1",
+  "name": "John",
+  "email": "john12345@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "2",
+  "name": "Emma",
+  "email": "emma12345@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "3",
+  "name": "Mike Smith",
+  "email": "msmith@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "4",
+  "name": "Dany85",
+  "email": "dany85@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "5",
+  "name": "Premasagar Rose",
+  "email": "p@dharmafly.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "6",
+  "name": "Sarah Oarah",
+  "email": "sarahoarah@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "7",
+  "name": "Aron Caroll",
+  "email": "self@aroncaroll.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "8",
+  "name": "roberto",
+  "email": "robertoblurbzz@aroncaroll.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "9",
+  "name": "Dunkan",
+  "email": "dunkan_bzzzzzzzzzzzzzzzzzz@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "10",
+  "name": "James Cake",
+  "email": "jamescake@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "11",
+  "name": "Natan Johnsons",
+  "email": "njohnzonzzz@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "12",
+  "name": "Toby Turpin",
+  "email": "tturpin@mailinator.com",
+  "created_at": 1308408645754
+  },
+  {
+  "id": "13",
+  "name": "Andrea Fiore",
+  "email": "andrea.giulio.fiore@googlemail.com",
+  "created_at": 1308408645754
+  }
+]}

@@ -1,25 +1,30 @@
 var express = require('express'),
     fs = require('fs'),
-    mongoose = require('mongoose'),
-    everyauth = require('everyauth'),
-    mongooseAuth = require('mongoose-auth'),
-    models = require('./models'),
-    User = models.User,
-    Item = models.Item,
-
+    _ = require('underscore'),
+    db,
     app = express.createServer(
+      express.logger(),
       express.bodyParser(),
       express.static(__dirname + '/public'),
-      express.cookieParser(),
-      express.session({ secret: 'blurbzzz'}),
-      mongooseAuth.middleware()
+      express.errorHandler({ dumpExceptions: true, showStack: true })
+    //  express.cookieParser(),
+    //  express.session({ secret: 'blurbzzz'}),
     );
 
 
-everyauth.debug = true;
+//load fakedb
+
+fs.readFile(__dirname + '/fixtures.json', function (err, buffer){
+  db = JSON.parse(buffer.toString());
+
+  if (err){
+    throw err;
+  }
+});
+
 
 app.get('/', function(req, res){
-  res.send('Hello World');
+  res.send('Hello World, we have '+db.users.length + " users and " + db.items.length + " items in our fake db" );
 });
 
 // return (paginated) list of all markers
@@ -27,20 +32,20 @@ app.get('/search', function(req, res){
   // req.get
   // Fetch x markers from db
   // Write JSON string to res
+   var data = req.query.type ?
+     _.select(db.items, function (item) {
+       return item.type === req.query.type;
+     }) : db.items;
 
-  fs.readFile(__dirname + '/mocks/item.json', function(err, buffer){
-    var mock, items;
-
-    if (err){
-      throw err;
-    }
-    mock = JSON.parse(buffer.toString());
-    items = [mock];
-    res.send(items);
-  });
+   res.contentType("application/json");
+   res.send(db.items);
 });
 
-// Save marker to 
+
+
+
+
+// Save marker to
 app.post('/items', function(req, res){
   // Authenticate user
   // Validate the data
@@ -66,5 +71,4 @@ app.del('/items/:id', function(req, res){
 });
 
 
-mongooseAuth.helpExpress(app);
 app.listen(3000);
