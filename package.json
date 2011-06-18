@@ -1,0 +1,14 @@
+{
+  "name": "touchypeely",
+  "description": "Helping vegetable waste find a home",
+  "author": "Dharmafly + friends",
+  "version": "0.0.1",
+  "contributors": [],
+  "dependencies": {
+    "express": ">= 2.3.11 < 3.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">= 0.4.1 < 0.5.0"
+  }
+}
