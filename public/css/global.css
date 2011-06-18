@@ -1,3 +1,54 @@
+/* @override http://localhost:3000/css/global.css */
+
 body {
-	font-size: 62.5%/1 Helvetica, sans-serif;
+	font: 62.5%/1 Helvetica, sans-serif;
+	margin: 0 auto;
+	width: 960px;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+	font-size: 1em;
+	margin: 0;
+}
+
+header {
+	font-size: 48px;
+	padding-bottom: 20px;
+}
+
+.column {
+	width: 50%;
+	float: left;
+}
+
+section {
+	font-size: 14px;
+	overflow: hidden;
+}
+
+section.about > div, section.help > div {
+	width: 460px;
+	float: left;
+}
+
+section.about > div:first-child, section.help > div:first-child {
+	margin-right: 20px;
+}
+
+section div h2 {
+	font-size: 18px;
+	margin-bottom: 14px;
+}
+
+section div p {
+	margin-bottom: 14px;
+}
+
+footer {
+	font-size: 14px;
+}
+
+#map {
+	width: 100%;
+	height: 480px;
 }
