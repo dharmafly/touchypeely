@@ -1,6 +1,6 @@
-var express = require('express');
-
-var app = express.createServer();
+var express = require('express'),
+    fs = require('fs'),
+    app = express.createServer();
 
 app.use(express.static(__dirname + '/public'));
 
@@ -13,6 +13,18 @@ app.get('/search', function(req, res){
   // req.get
   // Fetch x markers from db
   // Write JSON string to res
+  
+  fs.readFile(__dirname + '/mocks/item.json', function(err, buffer){
+    var mock, items;
+  
+    if (err){
+      throw err;
+    }
+    
+    mock = JSON.parse(buffer.toString());
+    items = [mock];
+    res.send(items);
+  });
 });
 
 // Save marker to 
