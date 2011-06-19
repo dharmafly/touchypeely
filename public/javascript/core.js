@@ -90,24 +90,28 @@
     return marker;
   }
   
-  function addPopupListener(marker, selector, eventName, handler){
-    var popupElem = $(marker._popup._contentNode),
-        target = popupElem.find(selector);
-    
-    target.bind(eventName, handler);
-    return marker;
-  }
-  
   function onClickMarker(event){
     var marker = event.target,
         popupContents = tim('marker-item-details', marker.options.touchpeely_item),
-        popupElem,
-        button;
+        popupElem = $(popupContents);
+        
+    function setContentsToItemDetails(){
+      var popupContents = tim('marker-item-details', marker.options.touchpeely_item),
+          popupElem = $(popupContents);
+          
+      popupElem.find('button').one('click', setContentsToSendMsg);
+      marker.bindPopup(popupElem[0]).openPopup();
+    }
     
-    marker.bindPopup(popupContents).openPopup();
-    addPopupListener(marker, 'button.send-msg', 'click', function(){
-      marker._popup.setContent(tim('marker-send-msg'));
-    });
+    function setContentsToSendMsg(){
+      var popupContents = tim('marker-send-msg'),
+          popupElem = $(popupContents);
+          
+      popupElem.find('button').one('click', setContentsToItemDetails);
+      marker.bindPopup(popupElem[0]).openPopup();
+    }
+    
+    setContentsToItemDetails();
   }
   
   function getItems(){
@@ -116,7 +120,7 @@
         var icon = item.type === 'bucket' ? new BucketIcon() : new HeapIcon(),
             latlng = new L.LatLng(item.lat, item.lng),
             marker = addMarker(latlng, {icon:icon, touchpeely_item:item});
-            
+        
         marker.on('click', onClickMarker);
       });
     });
