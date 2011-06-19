@@ -3,7 +3,8 @@
 body {
 	font: 62.5%/1 Helvetica, sans-serif;
 	margin: 0 auto;
-	width: 960px;
+	width: 820px;
+	background: #cbe1f1 url(../images/background.jpg) no-repeat center 10px;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul {
@@ -13,12 +14,14 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 header {
 	font-size: 48px;
-	padding-bottom: 20px;
 }
 
-.column {
-	width: 50%;
-	float: left;
+header h1 {
+	background: url(../images/touchy-logo.png);
+	width: 572px;
+	height: 131px;
+	margin: 120px auto 0;
+	text-indent: -9000em;
 }
 
 section {
@@ -26,21 +29,21 @@ section {
 	overflow: hidden;
 }
 
-section.about > div, section.help > div {
-	width: 460px;
+.column {
+	width: 400px;
 	float: left;
 }
 
-section.about > div:first-child, section.help > div:first-child {
+.column.first {
 	margin-right: 20px;
 }
 
-section div h2 {
+.column h2 {
 	font-size: 18px;
 	margin-bottom: 14px;
 }
 
-section div p {
+.column p {
 	margin-bottom: 14px;
 }
 
@@ -48,7 +51,15 @@ footer {
 	font-size: 14px;
 }
 
+.map {
+	padding: 15px;
+	background: #fff;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.27);
+	margin: 0 -16px;
+}
+
 #map {
 	width: 100%;
 	height: 480px;
+	border: 1px solid #cccccc;
 }
