@@ -14,9 +14,17 @@ var express = require('express'),
 
 
 //load fakedb
-
 fs.readFile(__dirname + '/fixtures.json', function (err, buffer){
   db = JSON.parse(buffer.toString());
+  //embed user records in item objects
+
+  _.each(db.items, function (item) {
+    var user = _.detect(db.users, function (user) {
+      return user.id == item.id;
+    }) || {};
+
+    item.user = user;
+  });
 
   if (err){
     throw err;
@@ -93,18 +101,15 @@ app.namespace('/api', function () {
     // Delete item
     // Return 204
 
-    var itemIndex,
-        itemsDeleted;
-    _.each(db.items, function (item, index) {
-      if (item.id == req.params.id) {
-        itemIndex = index;
-      }
+    var item = _.detect(db.items, function (item, index) {
+      return item.id == req.params.id;
     });
 
-    if (itemIndex) {
-      db.items.splice(itemIndex,1);
-      res.send("OK");
+    if (item) {
+      db.items.splice(parseInt(item.id, 10),1);
     }
+
+    res.send('ok');
 
   });
 });
