@@ -78,8 +78,8 @@
     });
   }
   
-  function addMarker(markerLocation, icon){
-    var marker = new L.Marker(markerLocation, {icon:icon, draggable:true});
+  function addMarker(markerLocation, options){
+    var marker = new L.Marker(markerLocation, options);
     map.addLayer(marker);
     return marker;
   }
@@ -91,7 +91,7 @@
         var icon = item.type === 'bucket' ? new BucketIcon() : new HeapIcon(),
             latlng = new L.LatLng(item.lat, item.lng);
             
-        addMarker(latlng, icon);
+        addMarker(latlng, {icon:icon});
       });
     });
   }
