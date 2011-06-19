@@ -7,13 +7,18 @@
         PLEASE_ENTER_LOCATION: 'Please enter a location.'
       },
       
-      BucketIcon = L.Icon.extend({
-        iconUrl: '/images/marker.png',
-        shadowUrl: '/images/marker-shadow.png'
+      ItemIcon = L.Icon.extend({
+        shadowUrl: '/images/marker-item-shadow.png',
+        iconSize: new L.Point(36, 42),
+        shadowSize: new L.Point(41, 47),
+        iconAnchor: new L.Point(18, 42),
+        popupAnchor: new L.Point(3, -39)
+      }),      
+      BucketIcon = ItemIcon.extend({
+        iconUrl: '/images/marker-peelings.png'
       }),
-      HeapIcon = L.Icon.extend({
-        iconUrl: '/images/marker.png',
-        shadowUrl: '/images/marker-shadow.png'
+      HeapIcon = ItemIcon.extend({
+        iconUrl: '/images/marker-heap.png'
       }),
       mapElem = $("#map"),
       map;
