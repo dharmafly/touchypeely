@@ -2,6 +2,7 @@
   var GOOGLE_GEOCODE_URI = 'http://www.google.com/uds/GlocalSearch',
       SEARCH_URI = '/api/search',
       CREATE_URI = '/api/items',
+      SEND_MESSAGE_URI = '/api/message',
       CENTRE = new L.LatLng(50.825945228670115, -0.14792919158935547),
       THE_GUARDIAN = new L.LatLng(51.535044513278166, -0.12205123901367188),
       lang = {
@@ -103,6 +104,10 @@
     return marker;
   }
   
+  function requestSendMsg(msg){
+    $.post(SEND_MESSAGE_URI, {message:msg});
+  }
+  
   function onClickMarker(event){
     var marker = event.target,
         popupContents = tim('marker-item-details', marker.options.touchpeely_item),
@@ -193,6 +198,8 @@
           map.removeLayer(marker);
           addItemToMap(item);
         });
+        
+        requestSendMsg(itemData.description);
       }
       
       marker.on('click', displayAddItem);
