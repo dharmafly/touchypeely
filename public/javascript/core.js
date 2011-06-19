@@ -135,19 +135,20 @@
   $('.leaflet-control-fullscreen').click(function (event) {
     var body = $('body');
     body.toggleClass('map-fullscreen', !body.hasClass('map-fullscreen'));
+    map.invalidateSize();
     event.preventDefault();
   });
   
   function postItem (data, callback) {
     $.post(CREATE_URI, data, callback);
   }
+  
   /////
 
   window.map = map = createMap();
   setupAddressLookup();
   map.setView(THE_WERKS_LAT_LNG, 14);
   getItems();
-  debugger;
   
 
 })(this, this.L, this.$, this.jQuery, this.keypath, this.tim, this.document, this);
