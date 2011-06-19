@@ -24,7 +24,7 @@
 						<span id="form-address-report"></span>
 					</div>
 				</form>
-		
+				
 				<div id="map"></div>
 				<div class="filters">
 					Showing 
@@ -82,9 +82,24 @@
 			<p>We made this.</p>
 		</footer>
 	</div>
+	
+	
+	<!-- TEMPLATES -->
+	<script type="text/tim" class="marker-item-details">
+	  <p>{{description}}</p>
+	  <button class=send-msg>Contact person</button>
+	</script>
+	
+	<script type="text/tim" class="marker-send-msg">
+	  <h1>Send a message</h1>
+	  <textarea></textarea>
+	  <button>Send</button>
+	</script>
+	
 	<script src="javascript/leaflet.js"></script>
 	<script src="javascript/jquery.min.js"></script>
 	<script src="javascript/keypath.js"></script>
+	<script src="javascript/tim.js"></script>
 	<script src="javascript/core.js"></script>
 </body>
 </html>

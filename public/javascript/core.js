@@ -1,7 +1,12 @@
-(function (context, L, $, jQuery, keypath, document, window) {
+(function (context, L, $, jQuery, keypath, tim, document, window) {
   var GOOGLE_GEOCODE_URI = 'http://www.google.com/uds/GlocalSearch',
       SEARCH_URI = '/api/search',
       THE_WERKS_LAT_LNG = new L.LatLng(50.82719221187368, -0.16513824462890625),
+      lang = {
+        COULD_NOT_LOCATE: "Sorry, we couldn't find that.",
+        PLEASE_ENTER_LOCATION: 'Please enter a location.'
+      },
+      
       BucketIcon = L.Icon.extend({
         iconUrl: '/images/marker.png',
         shadowUrl: '/images/marker-shadow.png'
@@ -10,6 +15,7 @@
         iconUrl: '/images/marker.png',
         shadowUrl: '/images/marker-shadow.png'
       }),
+      mapElem = $("#map"),
       map;
       
   // Console logging
@@ -36,7 +42,7 @@
   }
   
   function createMap(){
-    var map = new L.Map('map'),
+    var map = new L.Map('map', {scrollWheelZoom: false}),
       cloudemadeApiKey = 'f1d499e4ec7f4fe099a25b07306432c5',
       cloudmadeUrl = 'http://{s}.tile.cloudmade.com/' + cloudemadeApiKey + '/997/256/{z}/{x}/{y}.png',
       cloudmadeAttrib = 'Map data: <a href="http://www.openstreetmap.org">OpenStreetMap</a>',
@@ -65,13 +71,13 @@
             map.setView(latlng, 14);
           }
           else {
-            report.text("Sorry, we couldn't find that.");
+            report.text(lang.COULD_NOT_LOCATE);
           }
         });
       }
       
       else {
-        report.text("Please enter a location.");
+        report.text(lang.PLEASE_ENTER_LOCATION);
       }
       
       event.preventDefault();
@@ -84,14 +90,34 @@
     return marker;
   }
   
+  function addPopupListener(marker, selector, eventName, handler){
+    var popupElem = $(marker._popup._contentNode),
+        target = popupElem.find(selector);
+    
+    target.bind(eventName, handler);
+    return marker;
+  }
+  
+  function onClickMarker(event){
+    var marker = event.target,
+        popupContents = tim('marker-item-details', marker.options.touchpeely_item),
+        popupElem,
+        button;
+    
+    marker.bindPopup(popupContents).openPopup();
+    addPopupListener(marker, 'button.send-msg', 'click', function(){
+      marker._popup.setContent(tim('marker-send-msg'));
+    });
+  }
+  
   function getItems(){
     $.getJSON(SEARCH_URI, function(items){
       $.each(items, function(key, item){
-      
         var icon = item.type === 'bucket' ? new BucketIcon() : new HeapIcon(),
-            latlng = new L.LatLng(item.lat, item.lng);
+            latlng = new L.LatLng(item.lat, item.lng),
+            marker = addMarker(latlng, {icon:icon, touchpeely_item:item});
             
-        addMarker(latlng, {icon:icon});
+        marker.on('click', onClickMarker);
       });
     });
   }
@@ -99,9 +125,9 @@
   /////
 
   window.map = map = createMap();
-  setupAddressLookup(map);
+  setupAddressLookup();
   map.setView(THE_WERKS_LAT_LNG, 14);
   getItems();
   
 
-})(this, this.L, this.$, this.jQuery, this.keypath, this.document, this);
+})(this, this.L, this.$, this.jQuery, this.keypath, this.tim, this.document, this);
