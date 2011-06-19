@@ -1,6 +1,6 @@
 (function (context, L, $, jQuery, keypath, document, window) {
   var GOOGLE_GEOCODE_URI = 'http://www.google.com/uds/GlocalSearch',
-      SEARCH_URI = '/search',
+      SEARCH_URI = '/api/search',
       THE_WERKS_LAT_LNG = new L.LatLng(50.82719221187368, -0.16513824462890625),
       BucketIcon = L.Icon.extend({
         iconUrl: '/images/marker.png',
