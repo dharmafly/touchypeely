@@ -126,6 +126,12 @@
     });
   }
   
+  $('.leaflet-control-fullscreen').click(function (event) {
+    var body = $('body');
+    body.toggleClass('map-fullscreen', !body.hasClass('map-fullscreen'));
+    event.preventDefault();
+  });
+  
   /////
 
   window.map = map = createMap();
