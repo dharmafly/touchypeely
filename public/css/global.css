@@ -52,10 +52,45 @@ footer {
 }
 
 .map {
+	position: relative;
 	padding: 15px;
 	background: #fff;
 	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.27);
 	margin: 0 -16px;
+	overflow: visible;
+}
+
+.map form {
+	position: absolute;
+	top: -25px;
+	right: 30px;
+	background: #fff;
+	z-index: 1000;
+	height: 45px;
+	padding: 5px 5px 5px 25px;
+	background-color: #f9f7f7;
+	border: 1px solid #dddddd;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14);
+	-webkit-border-radius: 25px 0 0 25px;
+}
+
+.map form label {
+	font-size: 28px;
+	color: #4676a1;
+}
+
+.map form input,
+.map form ::-webkit-input-placeholder {
+	display: inline-block;
+	line-height: 35px;
+	padding: 0 8px;
+	background: 0;
+	font-size: 28px;
+	color: #4e5964;
+}
+
+.map form button {
+	display: none;
 }
 
 #map {
