@@ -2,7 +2,9 @@ var express = require('express'),
     fs = require('fs'),
     _ = require('underscore'),
     ns = require('express-namespace'),
+    request = require('request'),
     db,
+    conf,
     app = express.createServer(
       express.logger(),
       express.bodyParser(),
@@ -13,7 +15,7 @@ var express = require('express'),
     );
 
 
-//load fakedb
+//load fixtures
 fs.readFile(__dirname + '/fixtures.json', function (err, buffer){
   db = JSON.parse(buffer.toString());
 
@@ -31,13 +33,15 @@ fs.readFile(__dirname + '/fixtures.json', function (err, buffer){
   }
 });
 
+//load config variables
+fs.readFile(__dirname + '/conf.json', function (err, buffer){
+  conf = JSON.parse(buffer.toString());
+});
+
 
 function nextId(collection){
-  debugger;
   return _.max(_.pluck(db[collection], 'id')) + 1;
 }
-
-
 
 app.get('/login', function(req, res){
   res.render(__dirname + '/views/login.ejs');
@@ -65,6 +69,37 @@ app.namespace('/api', function () {
      res.contentType("application/json");
      res.send(data);
   });
+
+  app.post('/message', function (req, res) {
+    var data = {
+      uname: conf.txtlocalUserid,
+      pword: conf.txtlocalPassword,
+      selectednums: '447941192398',
+      from: 'TouchyPeely',
+      message: res.body.message,
+      info: 1,
+      test: 0
+    };
+
+    _.each(data, function (value, attribute) {
+      var val = attribute === 'message' ? encodeURIComponent(value) : value;
+      body += attribute + "=" + val + '&';
+    });
+
+
+    request({
+      uri: 'http://www.txtlocal.com/sendsmspost.php?'+body,
+      method: 'GET',
+      headers: {
+        'ContentType': 'application/x-www-form-urlencoded'
+      },
+      body: ""
+
+    }, function (err, res2, data) {
+      res.send(data);
+    });
+  });
+
   // Save marker to
   app.post('/items', function(req, res){
     // Authenticate user
