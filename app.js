@@ -16,8 +16,8 @@ var express = require('express'),
 //load fakedb
 fs.readFile(__dirname + '/fixtures.json', function (err, buffer){
   db = JSON.parse(buffer.toString());
-  //embed user records in item objects
 
+  //embed user records in item objects
   _.each(db.items, function (item) {
     var user = _.detect(db.users, function (user) {
       return user.id == item.id;
@@ -30,6 +30,14 @@ fs.readFile(__dirname + '/fixtures.json', function (err, buffer){
     throw err;
   }
 });
+
+
+function nextId(collection){
+  debugger;
+  return _.max(_.pluck(db[collection], 'id')) + 1;
+}
+
+
 
 app.get('/login', function(req, res){
   res.render(__dirname + '/views/login.ejs');
@@ -65,19 +73,23 @@ app.namespace('/api', function () {
     // return JSON representation of model
 
     var description = req.body.description,
-        user = req.body.userId,
+        user = _.detect(db.users, function (user) {
+          return user.id == req.body.user;
+        }),
         type = req.body.type,
         createdAt = Date.now(),
         lat = req.body.lat,
         lng = req.body.lng,
 
         newItem = {
+          id: nextId('items'),
           description: description,
           user: user,
           type: type,
           created_at: createdAt,
           lat: lat,
-          lng: lng
+          lng: lng,
+          available: true
         };
 
     db.items.push(newItem);

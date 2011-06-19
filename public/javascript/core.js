@@ -1,6 +1,7 @@
 (function (context, L, $, jQuery, keypath, tim, document, window) {
   var GOOGLE_GEOCODE_URI = 'http://www.google.com/uds/GlocalSearch',
       SEARCH_URI = '/api/search',
+      CREATE_URI = '/api/items',
       THE_WERKS_LAT_LNG = new L.LatLng(50.82719221187368, -0.16513824462890625),
       lang = {
         COULD_NOT_LOCATE: "Sorry, we couldn't find that.",
@@ -132,12 +133,16 @@
     event.preventDefault();
   });
   
+  function postItem (data, callback) {
+    $.post(CREATE_URI, data, callback);
+  }
   /////
 
   window.map = map = createMap();
   setupAddressLookup();
   map.setView(THE_WERKS_LAT_LNG, 14);
   getItems();
+  debugger;
   
 
 })(this, this.L, this.$, this.jQuery, this.keypath, this.tim, this.document, this);
