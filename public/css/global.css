@@ -215,13 +215,17 @@ footer a:hover {
 .info .label {
 	font-size: 14px;
 	color: #4e5964;
+	font-weight: bold;
 }
 
 .info-create-marker a {
+	text-align: center;
 	display: inline-block;
 	padding-top: 46px;
-	width: 42px;
-	background: url(../images/marker-heap-shadow.png) no-repeat;
+	width: 92px;
+	color: #888;
+	text-decoration: none;
+	background: url(../images/marker-heap-shadow.png) no-repeat top center;
 }
 
 .info-create-marker .predicate {
@@ -231,12 +235,31 @@ footer a:hover {
 	text-transform: uppercase;
 	line-height: 1;
 	position: relative;
-	top: 10px;
+	top: -30px;
 }
 
 .info-create-marker .peelings {
-	background: url(../images/marker-peelings-shadow.png) no-repeat;
+	background: url(../images/marker-peelings-shadow.png) no-repeat top center;
 }
+
+.field {
+	position: relative;
+}
+
+.field-range {
+	position: absolute;
+	top: 22px;
+	left: 0;
+}
+
+.field-range input {
+	position: relative;
+	top: 4px;
+	width: 110px;
+	cursor: pointer;
+}
+
+
 
 #map {
 	width: 100%;
