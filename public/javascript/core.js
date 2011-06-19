@@ -105,7 +105,8 @@
   }
   
   function requestSendMsg(msg){
-    $.post(SEND_MESSAGE_URI, {message:msg});
+    O(msg);
+    $.post(SEND_MESSAGE_URI, {message:msg}, O);
   }
   
   function onClickMarker(event){
@@ -125,7 +126,11 @@
       var popupContents = tim('marker-send-msg'),
           popupElem = $(popupContents);
           
-      popupElem.find('button').one('click', setContentsToMsgSent);
+      popupElem.find('button').one('click', function(){
+        var msg = popupElem.find('textarea').val();
+        requestSendMsg(msg);
+        setContentsToMsgSent
+      });
       marker.bindPopup(popupElem[0]).openPopup();
     }
     
@@ -198,8 +203,6 @@
           map.removeLayer(marker);
           addItemToMap(item);
         });
-        
-        requestSendMsg(itemData.description);
       }
       
       marker.on('click', displayAddItem);

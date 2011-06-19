@@ -81,6 +81,8 @@ app.namespace('/api', function () {
       test: 0
     };
 
+    var body = '';
+
     _.each(data, function (value, attribute) {
       var val = attribute === 'message' ? encodeURIComponent(value) : value;
       body += attribute + "=" + val + '&';
