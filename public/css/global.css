@@ -327,8 +327,9 @@ footer a:hover {
 	display: inline-block;
 	color: #fff;
 	padding: 4px 10px;
-	border: 1px solid rgb(118, 145, 251);
+	border: 1px solid rgb(56, 101, 249);
 	background-color: rgb(56, 101, 249);
+	text-shadow: 0 -1px 0 rgb(56, 101, 249);
 	background-image: -webkit-linear-gradient(
 	    -90deg,
 	    rgb(118, 145, 251),
@@ -337,9 +338,9 @@ footer a:hover {
 	    rgb(54, 101, 250)
 	);
 	-webkit-box-shadow: 
-		inset 1px   0   0 rgba(255, 255, 255, 0.3),
-		inset -1px  0   0 rgba(255, 255, 255, 0.3),
-		inset 0     1px 0 rgba(255, 255, 255, 0.3);
+		inset 1px   0   1px rgba(255, 255, 255, 0.1),
+		inset -1px  0   1px rgba(255, 255, 255, 0.1),
+		inset 0     1px 1px rgba(255, 255, 255, 0.1);
 	-webkit-border-radius: 5px;
 }
 

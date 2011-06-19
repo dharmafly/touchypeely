@@ -1,7 +1,7 @@
 {"items": [
   {
    "id": "1",
-   "description": "John's bucket",
+   "description": "A small bucket of vegetable waste every week",
    "type": "bucket",
    "lat": 50.8267,
    "lng": -0.1549,
@@ -13,7 +13,7 @@
 
   {
    "id": "2",
-   "description": "Emma and Dave's bucket",
+   "description": "Two to three buckets of peelings and other vegetables a week",
    "type": "bucket",
    "lat": 50.83903,
    "lng": -0.15409,
@@ -25,7 +25,7 @@
 
   {
    "id": "3",
-   "description": "Smith family's bucket",
+   "description": "Fruit and veg needs a home",
    "type": "bucket",
    "lat": 50.8210,
    "lng":  -0.1395,
@@ -37,7 +37,7 @@
 
   {
    "id": "4",
-   "description": "The Basketmakers Arms'bucket",
+   "description": "Large amount of compostable waste from our pub kitchen",
    "type": "bucket",
    "lat": 50.8210,
    "lng": -0.1395,
@@ -49,8 +49,8 @@
 
   {
    "id": "5",
-   "description": "Prem's bucket",
-   "type": "bucket",
+   "description": "Prem's compost heap in his garden",
+   "type": "heap",
    "lat": 50.82400,
    "lng": -0.16498,
    "size": 5,
@@ -120,7 +120,7 @@
   },
   {
    "id": "11",
-   "description": "Clifton Garden's heap",
+   "description": "Clifton Garden's community compost, we need all kinds of vegetable waste",
    "type": "heap",
    "lat": 50.8258,
    "lng": -0.1476,
