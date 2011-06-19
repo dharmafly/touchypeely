@@ -143,7 +143,8 @@ footer a:hover {
 }
 
 .map form input,
-.map form ::-webkit-input-placeholder {
+.map form ::-webkit-input-placeholder,
+.leaflet-popup-content textarea {
 	font-family: Chunk;
 	display: inline-block;
 	padding: 4px 8px 4px;
@@ -292,3 +293,53 @@ footer a:hover {
 	text-decoration: none;
 	color: #4676a1;
 }
+
+.leaflet-popup-content {
+	font-size: 13px;
+	overflow: hidden;
+	color: #4e5964;
+}
+
+.leaflet-popup-content p {
+	margin: 0 0 4px;
+}
+
+.leaflet-popup-content textarea {
+	margin: 0 0 4px;
+}
+
+.leaflet-popup-content textarea {
+	display: block;
+	font: 14px/1.4 Helvetica;
+	-webkit-box-sizing: border-box;
+}
+
+.leaflet-popup-content textarea:focus {
+	outline: none;
+	border-color: #bbb;
+}
+
+.leaflet-popup-content button {
+	float: right;
+	font-family: Helvetica;
+	font-weight: bold;
+	font-size: 14px;
+	display: inline-block;
+	color: #fff;
+	padding: 4px 10px;
+	border: 1px solid rgb(118, 145, 251);
+	background-color: rgb(56, 101, 249);
+	background-image: -webkit-linear-gradient(
+	    -90deg,
+	    rgb(118, 145, 251),
+	    rgb(80, 117, 251) 50%,
+	    rgb(56, 101, 249) 50%,
+	    rgb(54, 101, 250)
+	);
+	-webkit-box-shadow: 
+		inset 1px   0   0 rgba(255, 255, 255, 0.3),
+		inset -1px  0   0 rgba(255, 255, 255, 0.3),
+		inset 0     1px 0 rgba(255, 255, 255, 0.3);
+	-webkit-border-radius: 5px;
+}
+
