@@ -76,7 +76,7 @@ app.namespace('/api', function () {
       pword: conf.txtlocalPassword,
       selectednums: '447941192398',
       from: 'TouchyPeely',
-      message: res.body.message,
+      message: req.body.message,
       info: 1,
       test: 0
     };
