@@ -2,7 +2,8 @@
   var GOOGLE_GEOCODE_URI = 'http://www.google.com/uds/GlocalSearch',
       SEARCH_URI = '/api/search',
       CREATE_URI = '/api/items',
-      THE_WERKS_LAT_LNG = new L.LatLng(50.82719221187368, -0.16513824462890625),
+      CENTRE = new L.LatLng(50.825945228670115, -0.14792919158935547),
+      THE_GUARDIAN = new L.LatLng(51.535044513278166, -0.12205123901367188),
       lang = {
         COULD_NOT_LOCATE: "Sorry, we couldn't find that.",
         PLEASE_ENTER_LOCATION: 'Please enter a location.'
@@ -21,8 +22,14 @@
       HeapIcon = ItemIcon.extend({
         iconUrl: '/images/marker-heap.png'
       }),
+      AddItemIcon = L.Icon.extend({
+        iconUrl: '/images/marker-add.png',
+        shadowUrl: '/images/marker-item-shadow.png'
+      }),
+      
       mapElem = $("#map"),
-      map;
+      map,
+      LOGGED_IN_USERID = "5";
       
   // Console logging
   window.O = function(){
@@ -113,25 +120,86 @@
       var popupContents = tim('marker-send-msg'),
           popupElem = $(popupContents);
           
-      popupElem.find('button').one('click', setContentsToItemDetails);
+      popupElem.find('button').one('click', setContentsToMsgSent);
+      marker.bindPopup(popupElem[0]).openPopup();
+    }
+    
+    function setContentsToMsgSent(){
+      var popupContents = tim('marker-msg-sent'),
+          popupElem = $(popupContents);
+          
       marker.bindPopup(popupElem[0]).openPopup();
     }
     
     setContentsToItemDetails();
   }
   
+  function addItemToMap(item){
+    var icon = item.type === 'bucket' ? new BucketIcon() : new HeapIcon(),
+        latlng = new L.LatLng(parseFloat(item.lat), parseFloat(item.lng)),
+        marker = addMarker(latlng, {icon:icon, touchpeely_item:item});
+  
+    marker.on('click', onClickMarker);
+  }
+  
   function getItems(){
     $.getJSON(SEARCH_URI, function(items){
       $.each(items, function(key, item){
-        var icon = item.type === 'bucket' ? new BucketIcon() : new HeapIcon(),
-            latlng = new L.LatLng(item.lat, item.lng),
-            marker = addMarker(latlng, {icon:icon, touchpeely_item:item});
-        
-        marker.on('click', onClickMarker);
+        addItemToMap(item);
       });
     });
   }
   
+  function postItem(data, callback) {
+    $.post(CREATE_URI, data, callback);
+  }
+  
+  function setupCreateItem(){
+    map.on('click', function(event){
+      var marker = addMarker(event.latlng, {icon: new AddItemIcon(), draggable:true}),
+          itemData = {user: LOGGED_IN_USERID};
+      
+      function displayAddItem(){
+        var popupContents = tim('marker-add-item'),
+            popupElem = $(popupContents);
+      
+        popupElem.find('a').one('click', displayEditItem);
+        marker.bindPopup(popupElem[0]).openPopup();
+      }
+      
+      function displayEditItem(event){
+        var popupContents = tim('marker-edit-item'),
+            popupElem = $(popupContents);
+            
+        itemData.type = event.target.hash.replace('#', '');
+        
+        popupElem.find('button').one('click', function(){
+          itemData.description = popupElem.find('textarea').val();
+          itemData.size = popupElem.find('input[type=range]').val();
+          createItem();
+        });
+        marker.bindPopup(popupElem[0]).openPopup();
+        event.preventDefault();
+      }
+      
+      function createItem(){
+        var latlng = marker.getLatLng();
+               
+        itemData.lat = parseFloat(latlng.lat);
+        itemData.lng = parseFloat(latlng.lng);
+        
+        postItem(itemData, function(item){
+          marker.closePopup();
+          map.removeLayer(marker);
+          addItemToMap(item);
+        });
+      }
+      
+      marker.on('click', displayAddItem);
+      marker.on('dragend', displayAddItem);
+    });
+  }
+    
   $('.leaflet-control-fullscreen').click(function (event) {
     var body = $('body');
     body.toggleClass('map-fullscreen', !body.hasClass('map-fullscreen'));
@@ -139,15 +207,12 @@
     event.preventDefault();
   });
   
-  function postItem (data, callback) {
-    $.post(CREATE_URI, data, callback);
-  }
-  
   /////
 
   window.map = map = createMap();
   setupAddressLookup();
-  map.setView(THE_WERKS_LAT_LNG, 14);
+  setupCreateItem();
+  map.setView(THE_GUARDIAN, 14);
   getItems();
   
 

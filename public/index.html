@@ -19,7 +19,7 @@
 				<form id="form-address">
 					<div>
 						<label for="field-address">I&rsquo;m in:</label>
-						<input id="field-address" name="address" placeholder="Brighton, UK" />
+						<input id="field-address" name="address" placeholder="London, UK" />
 						<button>Look up</button>
 						<span id="form-address-report"></span>
 					</div>
@@ -96,7 +96,7 @@
 	<script type="text/tim" class="marker-item-details">
 	  <div>
 	    <p>{{description}}</p>
-	    <button class=send-msg>Contact</button>
+	    <button class=send-msg>Contact {{user.name}}</button>
     </div>
 	</script>
 	
@@ -108,16 +108,22 @@
 	  </div>
 	</script>
 	
-	<script type="text/tim" class="marker-add-marker">
+	<script type="text/tim" class="marker-msg-sent">
+    <div>
+      <p>Thank you. Your message was sent.</p>
+		</div>
+	</script>
+	
+	<script type="text/tim" class="marker-add-item">
     <div class="info info-create-marker">
 			<p class="label">Choose a pin to add to the map:</p>
 			<a href="#heap" class="heap">Compost Heap</a>
 			<span class="predicate">or</span>
-			<a href="#peelings" class="peelings">Peelings</a>
+			<a href="#bucket" class="peelings">Peelings</a>
 		</div>
 	</script>
 
-  <script type="text/tim" class="marker-edit-marker">
+  <script type="text/tim" class="marker-edit-item">
 		<div class="info info-edit-marker">
 			<div class="field">
 				<label for="field-description">Add a description:</label>
@@ -126,7 +132,7 @@
 			
 			<div class="field">
 				<label for="field-size">How much:</label>
-				<input type="range" from="1" to="5" />
+				<input type="range" min=1 max=5 step=1 />
 			</div>
 			<button class="button">OK</button>
 		</div>
