@@ -1,10 +1,20 @@
 /* @override http://localhost:3000/css/global.css */
 
+@font-face {
+    font-family: 'Chunk';
+    src: url('../fonts/chunk-webfont.eot');
+    src: url('../fonts/chunk-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/chunk-webfont.woff') format('woff'),
+         url('../fonts/chunk-webfont.ttf') format('truetype'),
+         url('../fonts/chunk-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
 	font: 62.5%/1 Helvetica, sans-serif;
 	margin: 0 auto;
-	width: 820px;
-	background: #cbe1f1 url(../images/background.jpg) no-repeat center 10px;
+	background: #cbe1f1 url(../images/background.jpg) no-repeat center -40px;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul {
@@ -13,88 +23,160 @@ h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 header {
+	width: 820px;
 	font-size: 48px;
+	margin:  0 auto 250px;
 }
 
 header h1 {
+	position: relative;
+	left: -30px;
 	background: url(../images/touchy-logo.png);
 	width: 572px;
 	height: 131px;
-	margin: 120px auto 0;
+	margin: 100px auto 30px;
 	text-indent: -9000em;
 }
 
+.content {
+	position: relative;
+	background: #fff;
+	padding-top: 180px;
+	border-top: 1px solid #a1c9e5;
+	background-image: -webkit-linear-gradient(
+		top, #f7fafd 23%, #fff 50%
+	);
+}
+
 section {
-	font-size: 14px;
+	display: block;
+	font-size: 16px;
 	overflow: hidden;
+	width: 820px;
+	margin: 0 auto;
+	color: #3e4041;
+	margin-bottom: 40px;
 }
 
 .column {
-	width: 400px;
+	width: 380px;
 	float: left;
+	line-height: 20px;
 }
 
 .column.first {
-	margin-right: 20px;
+	margin-right: 60px;
 }
 
 .column h2 {
-	font-size: 18px;
-	margin-bottom: 14px;
+	font-family: Chunk;
+	font-size: 28px;
+	margin-bottom: 16px;
+	color: #4676a1;
+	font-weight: normal;
+
+	line-height: 32px;
 }
 
 .column p {
-	margin-bottom: 14px;
+	margin-bottom: 16px;
 }
 
 footer {
 	font-size: 14px;
 }
 
-.map {
-	position: relative;
+.map-wrapper {
+	position: absolute;
+	top: -215px;
 	padding: 15px;
 	background: #fff;
 	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.27);
-	margin: 0 -16px;
 	overflow: visible;
 }
 
-.map form {
+.map-wrapper {
+	position: absolute;
+	top: -215px;
+	left: 0;
+	right: 0;
+}
+
+.map form,
+.map .filters {
 	position: absolute;
 	top: -25px;
 	right: 30px;
 	background: #fff;
 	z-index: 1000;
-	height: 45px;
-	padding: 5px 5px 5px 25px;
+	padding: 3px 5px 3px 25px;
 	background-color: #f9f7f7;
 	border: 1px solid #dddddd;
 	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14);
-	-webkit-border-radius: 25px 0 0 25px;
+	-webkit-border-radius: 30px 0 0 30px;
 }
 
 .map form label {
-	font-size: 28px;
+	font-size: 24px;
+	font-family: Chunk;
 	color: #4676a1;
 }
 
 .map form input,
 .map form ::-webkit-input-placeholder {
+	font-family: Chunk;
 	display: inline-block;
-	line-height: 35px;
-	padding: 0 8px;
+	padding: 4px 8px 4px;
 	background: 0;
-	font-size: 28px;
+	font-size: 24px;
 	color: #4e5964;
+	border: 1px solid #dddddd;
+	width: 240px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.map form ::-webkit-input-placeholder {
+	color: #ccc;
 }
 
 .map form button {
 	display: none;
 }
 
+.map .filters {
+	font-family: Chunk;
+	display: inline-block;
+	padding: 0 25px 0 15px;
+	font-size: 24px;
+	width: auto;
+	top: auto;
+	bottom: -20px;
+	right: -30px;
+	-webkit-border-radius: 0 30px 30px 0;
+	line-height: 50px;
+	height: 55px;
+	color: #4e5964;
+}
+
+.map .filters a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 0 40px 0 5px;
+	background: url(../images/legend-sprite.png) no-repeat;
+}
+
+.map .filters .peelings {
+	color: #bdd402;
+	background-position: right -60px;
+}
+
+.map .filters .heaps {
+	color: #de6901;
+	background-position: right 14px;
+}
+
 #map {
 	width: 100%;
-	height: 480px;
+	height: 300px;
 	border: 1px solid #cccccc;
 }
